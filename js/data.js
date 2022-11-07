@@ -1,4 +1,4 @@
-import { getRandomElement, getRandomPositiveInteger } from './utils/utils';
+import { getRandomElement, getRandomPositiveInteger } from './utils/utils.js';
 
 const ID_LIST_SIZE = 25;
 const URL_LIST_SIZE = 25;
@@ -112,8 +112,7 @@ const createPhotoPost = () => (
   }
 );
 
-const generateMockObject = (numberPots) => Array.from( { length: numberPots }, createPhotoPost);
+const generateMocksObject = (numberPots) => Array.from( { length: numberPots }, createPhotoPost);
 
-const mocks = generateMockObject(NUMBER_OF_POSTS);
 
-export { mocks };
+export { generateMocksObject, NUMBER_OF_POSTS };
