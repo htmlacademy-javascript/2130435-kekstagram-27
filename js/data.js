@@ -114,5 +114,6 @@ const createPhotoPost = () => (
 
 const generateMocksObject = (numberPots) => Array.from( { length: numberPots }, createPhotoPost);
 
+const mocks = generateMocksObject(NUMBER_OF_POSTS);
 
-export { generateMocksObject, NUMBER_OF_POSTS };
+export { mocks };

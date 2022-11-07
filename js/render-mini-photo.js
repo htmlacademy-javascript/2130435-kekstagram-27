@@ -1,9 +1,8 @@
-import { generateMocksObject, NUMBER_OF_POSTS } from './data.js';
+import { mocks } from './data.js';
 
 const blockPictures = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-const mocks = generateMocksObject(NUMBER_OF_POSTS);
 
 const fillTemplate = (data) => {
   const fragmentPosts = document.createDocumentFragment();
@@ -29,3 +28,4 @@ const fillTemplate = (data) => {
 };
 
 fillTemplate(mocks);
+
