@@ -1408,3 +1408,21 @@ main {
 .hidden {
   display: none;
 }
+
+/* Pristine style */
+.error__wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+
+  align-items: center;
+}
+
+.error__text {
+  display: inline-block;
+  width: 300px;
+
+  margin-bottom: 5px;
+
+  text-align: center;
+  color: #ffe753;
+}
