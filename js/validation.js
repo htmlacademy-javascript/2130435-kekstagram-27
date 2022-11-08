@@ -39,7 +39,7 @@ const getListHashtag = () =>
 
 const validateHashtag = () => {
   const hashtagList = getListHashtag();
-  return (isUniqueHashtags(hashtagList) && checkRegExp(hashtagList) && hashtagList.length <= MAX_HASHTAGS) || hashtagField.va;
+  return (isUniqueHashtags(hashtagList) && checkRegExp(hashtagList) && hashtagList.length <= MAX_HASHTAGS) || hashtagField.value === '';
 };
 
 const validateDescription = () => validateMaxLengthStroke(descriptionField.value, MAX_LENGTH_STROKE);
