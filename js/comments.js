@@ -1,6 +1,13 @@
 const DEFAULT_WIDTH = '35';
 const DEFAULT_HEIGHT = '35';
 
+const COMMENTS_LOADING_MAX = 5;
+
+const commentsLoader = document.querySelector('.comments-loader');
+const socialCommentCount = document.querySelector('.social__comment-count');
+const fullscreenPhoto = document.querySelector('.big-picture');
+
+
 const createCommentItem = (avatar, name, message) => {
   const li = document.createElement('li');
   li.classList.add('social__comment');
@@ -23,12 +30,39 @@ const createCommentItem = (avatar, name, message) => {
 };
 
 const renderCorrectComments = (comments, list) => {
-  comments.forEach(
+  const commentList = comments.map(
     (comment) =>
-      list.append(
-        createCommentItem(comment.avatar, comment.name, comment.message)
-      )
+      createCommentItem(comment.avatar, comment.name, comment.message)
   );
+
+  let startElement = 0;
+  let endElement = 5;
+
+
+  const renderSegmentComments = () => {
+    const loadingListComment = commentList.slice(startElement, endElement);
+    loadingListComment.forEach((item) => list.append(item));
+    const lengthView = list.querySelectorAll('p');
+    socialCommentCount.textContent = `${lengthView.length} из ${commentList.length} комментариев`;
+
+    if (lengthView.length === commentList.length) {
+      commentsLoader.classList.add('hidden');
+    } else {
+      commentsLoader.classList.remove('hidden');
+    }
+
+    startElement += COMMENTS_LOADING_MAX;
+    endElement += COMMENTS_LOADING_MAX;
+
+  };
+
+
+  if (fullscreenPhoto.classList.contains('hidden')) {
+    commentsLoader.removeEventListener('click', renderSegmentComments);
+  }
+
+  commentsLoader.addEventListener('click', renderSegmentComments);
+  renderSegmentComments();
 };
 
 export { renderCorrectComments };
