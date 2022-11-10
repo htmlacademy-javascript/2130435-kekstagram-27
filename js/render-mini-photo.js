@@ -1,5 +1,3 @@
-import { mocks } from './data.js';
-
 const blockPictures = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
@@ -27,5 +25,4 @@ const fillTemplate = (data) => {
   blockPictures.append(fragmentPosts);
 };
 
-fillTemplate(mocks);
-
+export { fillTemplate };

@@ -1,5 +1,5 @@
 import { renderCorrectComments } from './comments.js';
-import { mocks } from './data.js';
+import { dataServer } from './api.js';
 import { isEscapeKey } from './utils/utils.js';
 
 const blockPictures = document.querySelector('.pictures');
@@ -26,7 +26,7 @@ const onButtonCancelClick = () => {
 };
 
 const getCorrectContent = (evt) => {
-  const correctItem = mocks.find(
+  const correctItem = dataServer.find(
     (item) =>
       item.url
         .includes(
