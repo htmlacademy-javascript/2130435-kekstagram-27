@@ -4,8 +4,6 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const image = document.querySelector('.img-upload__preview img');
 const sliderArea = document.querySelector('.img-upload__effect-level');
 
-// const sliderValue = document.querySelector('.effect-level__value');
-
 const FILTER_EFFECTS = {
   none: {
     nameEffect: 'origin',
