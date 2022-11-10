@@ -28,8 +28,7 @@ const onButtonCancelClick = () => {
 };
 
 
-function openFormModal (evt) {
-  evt.preventDefault();
+function openFormModal () {
   formPhotoDownload.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onPopupEscKeydown);
@@ -44,6 +43,6 @@ function closeFormModal () {
   document.removeEventListener('keydown', onPopupEscKeydown);
 }
 
-uploadFile.addEventListener('click', onFileInputChange);
+uploadFile.addEventListener('change', onFileInputChange);
 
 export { form, hashtagField, descriptionField };

@@ -38,10 +38,5 @@ const onBiggerButtonClick = () => {
   }
 };
 
-
-const onFieldsetScaleClick = () => {
-  buttonSmallerControl.addEventListener('click', onSmallerButtonClick);
-  buttonBiggerControl.addEventListener('click', onBiggerButtonClick);
-};
-
-onFieldsetScaleClick();
+buttonSmallerControl.addEventListener('click', onSmallerButtonClick);
+buttonBiggerControl.addEventListener('click', onBiggerButtonClick);
