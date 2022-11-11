@@ -1,3 +1,4 @@
+import { createErrorMessage } from './create-error-mesage.js';
 import { fillTemplate } from './render-mini-photo.js';
 
 const Url = {
@@ -6,20 +7,36 @@ const Url = {
 };
 
 
-const getDataServer = async (onSuccess) => {
+const getDataServer = async (onSuccess, onFail) => {
   try {
-    const resolve = await fetch(Url.GET);
-    const data = await resolve.json();
-    const posts = await data;
-    await onSuccess(posts);
-    return posts;
+    const response = await fetch(Url.GET);
+    if (response.ok) {
+      const data = await response.json();
+      onSuccess(data);
+      return data;
+    }
+    throw new Error('Ошибка загрузки с сервера!');
   }
   catch (err) {
-    return `${err.message}`;
+    return `${onFail(err.message)}`;
   }
 };
 
-const dataServer = await getDataServer(fillTemplate);
+const sendFormOnServer = async(onSuccess, body) => {
+  try {
+    const response = await fetch(Url.POST, body);
+    if (response.ok) {
+      return onSuccess();
+    }
+    throw new Error('Данные не отправились на сервер!');
+  }
+  catch (err) {
+    return `${createErrorMessage(err.message)}`;
+  }
+};
 
-export { dataServer };
+
+const dataServer = getDataServer(fillTemplate, createErrorMessage);
+
+export { dataServer, sendFormOnServer };
 
