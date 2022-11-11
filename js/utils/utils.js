@@ -16,5 +16,6 @@ const getRandomElement = (array) => array[getRandomPositiveInteger(FIRST_ITEM, a
 const validateMaxLengthStroke = (stroke, maxLength) => stroke.length <= maxLength;
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEnterKey = (evt) => evt.key === 'Enter';
 
-export { getRandomPositiveInteger, getRandomElement, validateMaxLengthStroke, isEscapeKey };
+export { getRandomPositiveInteger, getRandomElement, validateMaxLengthStroke, isEscapeKey, isEnterKey };

@@ -1,5 +1,5 @@
 import { renderCorrectComments } from './comments.js';
-import { mocks } from './data.js';
+import { dataServer } from './api.js';
 import { isEscapeKey } from './utils/utils.js';
 
 const blockPictures = document.querySelector('.pictures');
@@ -26,25 +26,25 @@ const onButtonCancelClick = () => {
 };
 
 const getCorrectContent = (evt) => {
-  const correctItem = mocks.find(
-    (item) =>
-      item.url
-        .includes(
-          evt.target.getAttribute('src')
-        )
-  );
-  const { comments, likes, description, url } = correctItem;
+  dataServer.then((data) => {
+    const correctItem = data.find(
+      (item) =>
+        item.url
+          .includes(
+            evt.target.getAttribute('src')
+          )
+    );
 
-  bigImage.src = url;
-  likeCounter.textContent = likes;
-  commentCounter.textContent = comments.length;
-  descriptionText.textContent = description;
+    const { comments, likes, description, url } = correctItem;
 
+    bigImage.src = url;
+    likeCounter.textContent = likes;
+    commentCounter.textContent = comments.length;
+    descriptionText.textContent = description;
 
-  commentsList.innerHTML = '';
-  renderCorrectComments(comments, commentsList);
-
-
+    commentsList.innerHTML = '';
+    renderCorrectComments(comments, commentsList);
+  });
 };
 
 function openPhotoModal (evt) {

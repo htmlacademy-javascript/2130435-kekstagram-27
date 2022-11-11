@@ -40,8 +40,10 @@ const renderCorrectComments = (comments, list) => {
 
 
   const renderSegmentComments = () => {
+    const commentFragment = document.createDocumentFragment();
     const loadingListComment = commentList.slice(startElement, endElement);
-    loadingListComment.forEach((item) => list.append(item));
+    loadingListComment.forEach((item) => commentFragment.append(item));
+    list.append(commentFragment);
     const lengthView = list.querySelectorAll('p');
     socialCommentCount.textContent = `${lengthView.length} из ${commentList.length} комментариев`;
 

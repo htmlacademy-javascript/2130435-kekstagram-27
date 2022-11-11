@@ -9,7 +9,7 @@ const buttonCancel = formPhotoDownload.querySelector('#upload-cancel');
 const hashtagField = document.querySelector('.text__hashtags');
 const descriptionField = document.querySelector('.text__description');
 
-const onFileInputChange = () => openFormModal();
+const onFileInputChange = (evt) => openFormModal(evt);
 
 const isTextFieldFocused = () =>
   document.activeElement === hashtagField ||
@@ -29,7 +29,6 @@ const onButtonCancelClick = () => {
 
 
 function openFormModal () {
-
   formPhotoDownload.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onPopupEscKeydown);
@@ -46,4 +45,4 @@ function closeFormModal () {
 
 uploadFile.addEventListener('change', onFileInputChange);
 
-export { form, hashtagField, descriptionField };
+export { form, hashtagField, descriptionField, closeFormModal };

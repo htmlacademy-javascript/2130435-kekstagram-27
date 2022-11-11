@@ -1,4 +1,7 @@
-import { descriptionField, form, hashtagField } from './form.js';
+import { sendFormOnServer } from './api.js';
+import { closeFormModal, descriptionField, form, hashtagField } from './form.js';
+import { resetForm } from './reset-form.js';
+import { showResponseMessage as showSuccessMessage } from './utils/response-message.js';
 import { validateMaxLengthStroke } from './utils/utils.js';
 
 const MAX_LENGTH_STROKE = 140;
@@ -49,6 +52,15 @@ pristine.addValidator(descriptionField, validateDescription, `Длина ком�
 
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  pristine.validate();
+  const isValid = pristine.validate();
+  const photoSend = new FormData(form);
+  if (isValid) {
+    sendFormOnServer(() => {
+      resetForm();
+      showSuccessMessage('success');
+      closeFormModal();
+    },
+    photoSend);
+  }
 });
 
