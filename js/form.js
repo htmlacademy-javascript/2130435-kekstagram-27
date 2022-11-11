@@ -45,4 +45,4 @@ function closeFormModal () {
 
 uploadFile.addEventListener('change', onFileInputChange);
 
-export { form, hashtagField, descriptionField };
+export { form, hashtagField, descriptionField, closeFormModal };

@@ -40,3 +40,5 @@ const onBiggerButtonClick = () => {
 
 buttonSmallerControl.addEventListener('click', onSmallerButtonClick);
 buttonBiggerControl.addEventListener('click', onBiggerButtonClick);
+
+export { scaleImage };

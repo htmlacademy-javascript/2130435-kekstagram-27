@@ -1,5 +1,6 @@
-import { createErrorMessage } from './create-error-mesage.js';
+import { createErrorMessage } from './create-error-message.js';
 import { fillTemplate } from './render-mini-photo.js';
+import { showResponseMessage } from './utils/response-message.js';
 
 const Url = {
   GET: 'https://27.javascript.pages.academy/kekstagram/data',
@@ -24,14 +25,17 @@ const getDataServer = async (onSuccess, onFail) => {
 
 const sendFormOnServer = async(onSuccess, body) => {
   try {
-    const response = await fetch(Url.POST, body);
+    const response = await fetch(Url.POST, {
+      method: 'POST',
+      body
+    });
     if (response.ok) {
       return onSuccess();
     }
     throw new Error('Данные не отправились на сервер!');
   }
   catch (err) {
-    return `${createErrorMessage(err.message)}`;
+    showResponseMessage('error');
   }
 };
 

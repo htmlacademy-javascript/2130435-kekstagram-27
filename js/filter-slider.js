@@ -129,4 +129,6 @@ const onFormFilterChange = (evt) => {
 };
 
 setDefaultFilter();
-form.addEventListener('change', onFormFilterChange);
+form.addEventListener('change', onFormFilterChange,);
+
+export { setDefaultFilter };
