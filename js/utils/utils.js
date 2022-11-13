@@ -1,6 +1,8 @@
 const IS_POSITIVE = 0;
 const FIRST_ITEM = 0;
 
+const TIME_DELAY = 500;
+
 const getRandomPositiveInteger = (from, to) => {
   if (from < IS_POSITIVE || to < IS_POSITIVE) {
     return NaN;
@@ -18,4 +20,14 @@ const validateMaxLengthStroke = (stroke, maxLength) => stroke.length <= maxLengt
 const isEscapeKey = (evt) => evt.key === 'Escape';
 const isEnterKey = (evt) => evt.key === 'Enter';
 
-export { getRandomPositiveInteger, getRandomElement, validateMaxLengthStroke, isEscapeKey, isEnterKey };
+const debounce = (callback, timeoutDelay = TIME_DELAY) => {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export { getRandomPositiveInteger, getRandomElement, validateMaxLengthStroke, isEscapeKey, isEnterKey, debounce };
+
