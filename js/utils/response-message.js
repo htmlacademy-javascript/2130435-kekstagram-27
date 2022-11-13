@@ -17,7 +17,7 @@ const showResponseMessage = (typeResponse) => {
     }
   };
 
-  const onNoMessageAreaClick = (evt) => {
+  const onNotMessageAreaClick = (evt) => {
     if (!evt.target.closest(`div.${typeResponse}__inner`)) {
       message.remove();
       document.removeEventListener('keydown', onEscapeKeydown);
@@ -42,7 +42,7 @@ const showResponseMessage = (typeResponse) => {
 
 
   document.addEventListener('keydown', onEscapeKeydown);
-  message.addEventListener('click', onNoMessageAreaClick);
+  message.addEventListener('click', onNotMessageAreaClick);
   buttonCancel.addEventListener('keydown', onButtonCancelKeydown);
   buttonCancel.addEventListener('click', onButtonCancelClick);
 };

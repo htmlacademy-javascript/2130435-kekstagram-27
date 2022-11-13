@@ -13,10 +13,9 @@ const buttonCancel = formPhotoDownload.querySelector('#upload-cancel');
 const hashtagField = document.querySelector('.text__hashtags');
 const descriptionField = document.querySelector('.text__description');
 
-const onFileInputChange = (evt) => openFormModal(evt);
-
-
 const preview = document.querySelector('.img-upload__preview img');
+
+const onFileInputChange = (evt) => openFormModal(evt);
 
 const changePhotoPreview = (file) => {
   preview.src = URL.createObjectURL(file);

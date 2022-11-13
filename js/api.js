@@ -2,13 +2,12 @@ import { createErrorMessage } from './create-error-message.js';
 import { fillTemplate } from './render-mini-photo.js';
 import { showResponseMessage } from './utils/response-message.js';
 
-const filterField = document.querySelector('.img-filters');
-
 const Url = {
   GET: 'https://27.javascript.pages.academy/kekstagram/data',
   POST: 'https://27.javascript.pages.academy/kekstagram'
 };
 
+const filterField = document.querySelector('.img-filters');
 
 const getDataServer = async (onSuccess, onFail) => {
   try {
@@ -41,7 +40,6 @@ const sendFormOnServer = async(onSuccess, body) => {
     showResponseMessage('error');
   }
 };
-
 
 const dataServer = getDataServer(fillTemplate, createErrorMessage);
 
