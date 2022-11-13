@@ -1,3 +1,4 @@
+import { onPopupEscKeydown } from '../form.js';
 import { isEnterKey, isEscapeKey } from './utils.js';
 
 
@@ -14,6 +15,9 @@ const showResponseMessage = (typeResponse) => {
     if (isEscapeKey(evt)) {
       message.remove();
       document.removeEventListener('keydown', onEscapeKeydown);
+      if (typeResponse === 'error'){
+        document.addEventListener('keydown', onPopupEscKeydown);
+      }
     }
   };
 
@@ -40,6 +44,9 @@ const showResponseMessage = (typeResponse) => {
     }
   };
 
+  if (typeResponse === 'error') {
+    document.removeEventListener('keydown', onPopupEscKeydown);
+  }
 
   document.addEventListener('keydown', onEscapeKeydown);
   message.addEventListener('click', onNotMessageAreaClick);

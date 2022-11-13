@@ -1,9 +1,3 @@
-const form = document.querySelector('.img-upload__effects');
-
-const sliderElement = document.querySelector('.effect-level__slider');
-const image = document.querySelector('.img-upload__preview img');
-const sliderArea = document.querySelector('.img-upload__effect-level');
-
 const FILTER_EFFECTS = {
   none: {
     nameEffect: 'origin',
@@ -64,6 +58,12 @@ const FILTER_EFFECTS = {
     nameEffect: 'brightness',
   }
 };
+
+const form = document.querySelector('.img-upload__effects');
+
+const sliderElement = document.querySelector('.effect-level__slider');
+const image = document.querySelector('.img-upload__preview img');
+const sliderArea = document.querySelector('.img-upload__effect-level');
 
 const sliderConfigInit = {
   range: {
