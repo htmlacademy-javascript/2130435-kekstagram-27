@@ -64,9 +64,10 @@ function closePhotoModal () {
 
 }
 
-
-blockPictures.addEventListener('click', (evt) => {
+const onMiniPictureClick = (evt) => {
   if (evt.target.matches('.picture__img')) {
     openPhotoModal(evt);
   }
-});
+};
+
+blockPictures.addEventListener('click', onMiniPictureClick);

@@ -1,9 +1,3 @@
-const form = document.querySelector('.img-upload__effects');
-
-const sliderElement = document.querySelector('.effect-level__slider');
-const image = document.querySelector('.img-upload__preview img');
-const sliderArea = document.querySelector('.img-upload__effect-level');
-
 const FILTER_EFFECTS = {
   none: {
     nameEffect: 'origin',
@@ -65,6 +59,14 @@ const FILTER_EFFECTS = {
   }
 };
 
+const form = document.querySelector('.img-upload__effects');
+
+const sliderElement = document.querySelector('.effect-level__slider');
+const image = document.querySelector('.img-upload__preview img');
+const sliderArea = document.querySelector('.img-upload__effect-level');
+
+const effectValue = document.querySelector('.effect-level__value');
+
 const sliderConfigInit = {
   range: {
     min: 0,
@@ -91,36 +93,36 @@ const setDefaultFilter = () => {
 };
 
 const getUnitFilter = (filter) => {
-  let Unit;
+  let unit;
   switch (filter) {
     case 'blur':
-      Unit = 'px';
+      unit = 'px';
       break;
     case 'invert':
-      Unit = '%';
+      unit = '%';
       break;
     default:
-      Unit = '';
+      unit = '';
       break;
   }
-  return Unit;
+  return unit;
 };
 
-const onSliderUpdate = (filter, unit) => {
+const changeFilter = (filter, unit) => {
   sliderElement.value = sliderElement.noUiSlider.get();
   sliderArea.style.display = 'block';
   image.style.filter = `${filter}(${sliderElement.value}${unit})`;
 };
 
+
 const addPhotoFilter = (evt) => {
-  const { nameEffect, config: filterConfig } = FILTER_EFFECTS[evt.target.value];
-  const unit = getUnitFilter(nameEffect);
+  effectValue.name = evt.target.value;
+  const { nameEffect, config: filterConfig } = FILTER_EFFECTS[effectValue.name];
 
   if (nameEffect === 'origin') {
     setDefaultFilter();
   } else {
     sliderElement.noUiSlider.updateOptions(filterConfig);
-    sliderElement.noUiSlider.on('update', () => onSliderUpdate(nameEffect, unit));
   }
 };
 
@@ -128,7 +130,14 @@ const onFormFilterChange = (evt) => {
   addPhotoFilter(evt);
 };
 
+const onSliderUpdate = () => {
+  const { nameEffect } = FILTER_EFFECTS[effectValue.name];
+  const unit = getUnitFilter(nameEffect);
+  changeFilter(nameEffect, unit);
+};
+
+form.addEventListener('change', onFormFilterChange);
+sliderElement.noUiSlider.on('update', onSliderUpdate);
 setDefaultFilter();
-form.addEventListener('change', onFormFilterChange,);
 
 export { setDefaultFilter };

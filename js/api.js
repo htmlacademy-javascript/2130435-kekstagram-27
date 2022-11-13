@@ -1,5 +1,6 @@
 import { createErrorMessage } from './create-error-message.js';
 import { fillTemplate } from './render-mini-photo.js';
+import { unblockButtonSubmit } from './submit-button.js';
 import { showResponseMessage } from './utils/response-message.js';
 
 const Url = {
@@ -38,6 +39,7 @@ const sendFormOnServer = async(onSuccess, body) => {
   }
   catch (err) {
     showResponseMessage('error');
+    unblockButtonSubmit();
   }
 };
 
