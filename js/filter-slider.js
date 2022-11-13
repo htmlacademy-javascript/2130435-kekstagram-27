@@ -65,7 +65,7 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const image = document.querySelector('.img-upload__preview img');
 const sliderArea = document.querySelector('.img-upload__effect-level');
 
-const valueInput = document.querySelector('.effect-level__value');
+const effectValue = document.querySelector('.effect-level__value');
 
 const sliderConfigInit = {
   range: {
@@ -116,8 +116,8 @@ const changeFilter = (filter, unit) => {
 
 
 const addPhotoFilter = (evt) => {
-  valueInput.name = evt.target.value;
-  const { nameEffect, config: filterConfig } = FILTER_EFFECTS[valueInput.name];
+  effectValue.name = evt.target.value;
+  const { nameEffect, config: filterConfig } = FILTER_EFFECTS[effectValue.name];
 
   if (nameEffect === 'origin') {
     setDefaultFilter();
@@ -131,7 +131,7 @@ const onFormFilterChange = (evt) => {
 };
 
 const onSliderUpdate = () => {
-  const { nameEffect } = FILTER_EFFECTS[valueInput.name];
+  const { nameEffect } = FILTER_EFFECTS[effectValue.name];
   const unit = getUnitFilter(nameEffect);
   changeFilter(nameEffect, unit);
 };
